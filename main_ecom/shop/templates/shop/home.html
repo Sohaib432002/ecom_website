@@ -1,0 +1,271 @@
+  {% extends 'shop/basic.html' %}
+
+  {% block title %} Home {% endblock %}
+
+  {%block style%} 
+  <style>
+body{    background: linear-gradient(90deg, rgb(1, 1, 2) 0%, rgb(83, 83, 87) 35%, rgb(8, 8, 8) 100%);
+    background-size: 200% 200%; /* Ensure the gradient covers more than the element */
+    animation: mybackground 8s  infinite;
+}
+  header {
+    background: linear-gradient(90deg, rgb(1, 1, 2) 0%, rgb(83, 83, 87) 35%, rgb(8, 8, 8) 100%);
+    background-size: 200% 200%; /* Ensure the gradient covers more than the element */
+    animation: mybackground 8s  infinite;
+  }
+
+  .imgs_mobile {
+    display: none;
+  }
+
+  @keyframes mybackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    
+    50% {
+      background-position: 100% 50%;
+    }
+    
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .conter-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 190px;
+  
+  }
+  .txt1{
+    display: flex;
+    flex-direction: column;
+    color: aliceblue;
+    padding: 13px;
+    font-size: xxx-large;
+    font-family: auto;
+    font-weight: 700;
+    
+  }
+  
+  .line{
+    display: none;
+  }
+  
+  @media (max-width: 767px) {
+    
+    .conter-1{
+      padding: 66px;
+      flex-wrap:wrap;
+    }
+    
+    .line{
+      display: none;
+    }
+
+  }
+
+  @media (max-width: 480px){
+    .txt1{
+      font-size: large;
+    }
+    .conter-1{
+      padding: 25px;
+    }
+    .images_1{
+    display: none !important;
+  }
+  .imgs_mobile{
+
+    display: flex;
+    padding: 29px;
+  }
+  .img_curser{
+    display: flex;
+    overflow: hidden;
+    /* padding: 87px 35px; */
+    overflow: hidden;
+    border-radius: 23px;
+    transition: 2s ease-in-out;
+  }
+  .imgs_mobile img{
+    width: 391px;
+  }
+  
+  .line{
+    display: flex;
+  }
+  }
+  .images_1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+
+}
+.btn button{
+  height: 30px;
+}
+  
+  .images_1 img{
+    width: 33%;
+    height: 100%;
+    object-fit: cover;
+    margin: 12px;
+    border-radius: 18%;
+  }
+
+  .im1{
+    animation: img1 5s infinite;
+  }
+  .im2{
+    animation: im2 5s infinite;
+  }
+  .im3{
+    animation: im3 5s infinite;
+  }
+  .im4{
+    animation: im4 5s infinite;
+  }
+  
+  @keyframes img1 {
+    0%{
+      translate: 0% 0%;
+        }
+    25%{
+      translate: 105% 0%;
+
+    }    
+    50%{
+      translate: 105% 105%;
+    }
+    75%{
+      translate: 0% 105%;
+    }
+    100%{
+      translate: 0% 0%;
+    }
+  }
+  @keyframes im2 {
+    0%{
+      translate: 0% 0%;
+        }
+    25%{
+      translate: 0% 105%;
+      
+
+    }    
+    50%{
+      translate: -105% 105%;
+      
+    }
+    75%{
+      translate: -100% 0%;
+      
+    }
+    100%{
+      translate: 0% 0%;
+    }
+  }
+  @keyframes im3 {
+    0%{
+      translate: 0% 0%;
+        }
+    25%{
+      translate: 0% -105%;
+      
+    }    
+    50%{
+      translate: 105% -105%;
+    }
+    75%{
+      translate: 105% 0%;
+     
+    }
+    100%{
+      translate: 0% 0%;
+    }
+  }
+  @keyframes im4 {
+    0%{
+      translate: 0% 0%;
+        }
+    25%{
+      translate: -100% 0%;
+      
+    }    
+    50%{
+      translate: -100% -105%;
+    }
+    75%{
+      translate: 0% -105%;
+    
+    }
+    100%{
+      translate: 0% 0%;
+      
+    }
+  }
+    </style>
+  {% endblock %}
+
+  {% block content %}
+
+  <header>
+    <div class="conter-1">
+      <div class="txt1">
+        <h1 style="color: yellowgreen;">Welcome</h1>
+        <p>Our goal is to provide you with the best quality of products.</p>
+      </div>
+      <div class="images_1">
+        <img class="im1" src="https://images.unsplash.com/photo-1530745342582-0795f23ec976?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img class="im2" src="https://media.istockphoto.com/id/979076604/photo/home-appliance.jpg?s=2048x2048&w=is&k=20&c=_gSVPP4K6Cu6mpGfqu77NItlT9Et5yT3ojRwFLiBhnM=" alt="">
+        <img class="im3" src="https://media.istockphoto.com/id/1585990183/photo/mother-and-two-daughters-shopping-school-supplies-in-a-store.jpg?s=2048x2048&w=is&k=20&c=Lr_U76ALlighCBaPA2FWY1KhL4GdET0JDI8sWuxwNSU=" alt="">
+        <img class="im4" src="https://media.istockphoto.com/id/1371981344/photo/buying-convenient-food.jpg?s=2048x2048&w=is&k=20&c=c2FMYn_ymYJ44QGGJx3_IeoyKhsvVKXlka6ibXBLcuQ=" alt="">
+      
+      </div>
+    </div>
+
+    <div class="imgs_mobile" >
+      <div class="btn">
+      <button class="backward" id="backward" onclick="backward()" ><</button></div>
+      <div class="img_curser" id="img_curser">
+     <img  src="https://images.unsplash.com/photo-1530745342582-0795f23ec976?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img  src="https://media.istockphoto.com/id/979076604/photo/home-appliance.jpg?s=2048x2048&w=is&k=20&c=_gSVPP4K6Cu6mpGfqu77NItlT9Et5yT3ojRwFLiBhnM=" alt="">
+        <img  src="https://media.istockphoto.com/id/1585990183/photo/mother-and-two-daughters-shopping-school-supplies-in-a-store.jpg?s=2048x2048&w=is&k=20&c=Lr_U76ALlighCBaPA2FWY1KhL4GdET0JDI8sWuxwNSU=" alt="">
+        <img  src="https://media.istockphoto.com/id/1371981344/photo/buying-convenient-food.jpg?s=2048x2048&w=is&k=20&c=c2FMYn_ymYJ44QGGJx3_IeoyKhsvVKXlka6ibXBLcuQ=" alt="">
+         </div>
+      <div class="btn">
+    <button class="forward" id="forward" onclick="forward()">></button>
+  </div>
+    </div>
+
+
+  </header>
+
+
+  <script>
+
+    
+    function backward(){
+      var x = document.getElementById("img_curser");
+      x.style.transition='all 1.5s ease-in-out';
+      x.scrollLeft -= 500;
+    }
+
+    function forward(){
+      var x = document.getElementById("img_curser");
+      x.scrollLeft += 500;
+    }
+  </script>
+
+  {% endblock %}
+
+  

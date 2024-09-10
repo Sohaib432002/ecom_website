@@ -1,0 +1,270 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Contact {% endblock %}
+
+{% block style %}
+<style>
+  .cont_container {
+    padding: 5%;
+  }
+  .contact_heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: monospace;
+    padding: 28px;
+  }
+  .form{
+    display: flex;
+    justify-content: center;
+    padding: 26px;
+    font-size: 30px;}
+    .input1{
+        display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    padding: 15px;
+    }
+    .input1 input{
+        padding: 11px;
+    width: 306px;
+    border-radius: 37px;
+    background: #e9e8e8;
+    border:none    }
+    
+    .input1 textarea{
+        padding: 11px;
+    width: 306px;
+    border-radius: 37px;
+    background: #e9e8e8;
+    border:none    }
+    .input_fiels{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .input1 label{
+        padding-bottom: 12px;
+        
+    }
+    .sub_btn{
+        display: flex;
+        justify-content: center;
+    }
+    .sub_btn button{display: flex;
+    width: 97%;
+    border-radius: 25px;
+    justify-content: center;
+    padding: 11px;
+    border: none;
+    cursor: pointer;
+    font-size: 21px;
+    transition: 0.3s all ease-in-out;
+    }
+    .sub_btn button:hover{
+        background-color: black;
+        color: white;
+    }
+    .cont_container_below_above{
+        padding: 5%;
+    }
+
+    .cont_container_below{ 
+        position: relative;
+    padding: 5% 0%;
+    padding-top: 0%;
+    background: rgb(92, 78, 76);
+    background: linear-gradient(0deg, rgba(92, 78, 76, 1) 63%, rgba(0, 0, 0, 0) 63%);
+    }
+    .contact_icons{
+        border: 2px solid red;
+    padding: 6% 44%;
+    background: black;
+    position: absolute;
+    top: 11%;
+    left: 6%;
+    width: 128px;
+    }
+    .inside_cout_container_below{
+        margin: 4%;
+    padding: 3%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* box-shadow: 0px 0px 6px 4px black; */
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 67%, rgb(255 255 255) 69%);
+    color: aliceblue;
+
+    }
+    .card{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    }
+    .card_img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 28px;
+    background: #5c4e4c;
+    border-radius: 77px;
+    margin: 8px;
+    }
+    .card i{
+        font-size: 74px;
+    }
+    .card_img img{
+        width: 20% ;
+        margin: 15px;
+    }
+    .txt_card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .card p{
+        margin: 2px 0px;
+    }
+    @media (max-width: 920px) {
+        .inside_cout_container_below{
+            
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 81%, rgb(255 255 255) 80%);
+    
+
+}
+    }
+
+    
+    @media (max-width: 800px) {
+        .sub_btn button{
+            margin-top: 26px;
+            width: 50%;
+        }
+    }
+    @media (max-width: 545px) {
+        .inside_cout_container_below{
+            background: linear-gradient(0deg, rgba(0, 0, 0, 1) 88%, rgb(255 255 255) 84%);
+        }
+    }
+    @media (max-width: 350px){
+        .card i{
+            font-size: 40px;
+        }
+        .inside_cout_container_below{
+            font-size: 10px;
+        }
+        .input1 input{
+            width: 225px;
+        }
+        .heading{
+            font-size: 16px;
+        }
+        .sub_heading{
+            font-size: 19px;
+    padding-top: 25px;
+        }
+    }
+    @media (max-width: 250px){ 
+        .input1 input{
+            width: 180px;
+        }
+        .sub_heading{
+            font-size: 13px;
+    padding-top: 25px;
+        }
+        .heading{
+            font-size: 12px;
+        }
+    }
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+<div class="cont_container">
+  <div class="contact_heading">
+    <div class="heading">
+      <h1>Contact Us</h1>
+    </div>
+    <div class="sub_heading">
+      Any questions or remarks? Just write us a message!
+    </div>
+  </div>
+  <div class="form">
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="264ee2c4-da8b-4c09-a292-106220697674">
+      <div class="input_fiels">
+        <div class="input1">
+        <label for="name">Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+    </div>
+    <div class="input1">
+        <label for="name">Email</label>
+        <input type="email" placeholder="Enter your email" name="email" required>
+    </div>
+    <br>
+    <div class="input1">
+        <label for="name">Massage</label>
+        <textarea name="message" placeholder="Enter your message" required></textarea>
+
+    </div>
+      </div>
+      <div class="sub_btn">
+        <button>Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="cont_container_below">
+  <div class="inside_cout_container_below">
+    <div class="card">
+        <div class="card_img">
+            <i class="fa-solid fa-person-running"></i>
+    </div>
+    <div class="txt_card">
+        <h1>About Club</h1>
+        <br>
+        <p>Runing Guide</p>
+        <p> Workouts</p>
+    </div>
+</div>
+    <div class="card">
+        <div class="card_img">
+            <i class="fa-solid fa-phone"></i>
+    </div>
+    <div class="txt_card">
+        <h1>Phone(Landline)</h1>
+        <br>
+        <p>+92 3196205248</p>
+        <p>+92 3191047875</p>
+    </div>
+</div>
+    <div class="card">
+        <div class="card_img">
+            <i class="fa-solid fa-location-dot"></i>
+    </div>
+    <div class="txt_card">
+        <h1>Our Office Location</h1>
+        <br>
+        <p>Near Iqbal Hotel,Talagang Road, Mianwali,</p>
+        <p> punjab,pakistan</p>
+    </div>
+</div>
+
+  </div>
+  </div>
+
+
+
+
+
+{% endblock %}

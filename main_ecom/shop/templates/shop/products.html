@@ -1,0 +1,440 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Products {% endblock %}
+
+{% block style %}
+
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(22, 20, 24);
+    color: #eee;
+    user-select: none;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+
+  .nft {
+    user-select: none;
+    max-width: 300px;
+    margin: 1rem auto;
+    border: 1px solid #ffffff22;
+    background-color: #282c34;
+    background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, .5) 100%);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: .7rem;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    overflow: hidden;
+    transition: .5s all;
+
+    hr {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #88888855;
+      margin-top: 0;
+    }
+
+    ins {
+      text-decoration: none;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      padding: 1rem;
+
+      .tokenImage {
+        border-radius: .5rem;
+        max-width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .description {
+        margin: .5rem 0;
+        color: #a89ec9;
+      }
+
+      .tokenInfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+          display: flex;
+          align-items: center;
+          color: #ee83e5;
+          font-weight: 700;
+
+          ins {
+            margin-left: -.3rem;
+            margin-right: .5rem;
+          }
+        }
+
+        .duration {
+          display: flex;
+          align-items: center;
+          color: #a89ec9;
+          margin-right: .2rem;
+
+          ins {
+            margin: .5rem;
+            margin-bottom: .4rem;
+          }
+        }
+      }
+
+      .creator {
+        display: flex;
+        align-items: center;
+        margin-top: .2rem;
+        margin-bottom: -.3rem;
+
+        ins {
+          color: #a89ec9;
+          text-decoration: none;
+        }
+
+        .wrapper {
+          display: flex;
+          align-items: center;
+          border: 1px solid #ffffff22;
+          padding: .3rem;
+          margin: 0;
+          margin-right: .5rem;
+          border-radius: 100%;
+          box-shadow: inset 0 0 0 4px #000000aa;
+
+          img {
+            border-radius: 100%;
+            border: 1px solid #ffffff22;
+            width: 2rem;
+            height: 2rem;
+            object-fit: cover;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    ::before {
+      position: fixed;
+      content: "";
+      box-shadow: 0 0 100px 40px #ffffff08;
+      top: -10%;
+      left: -100%;
+      transform: rotate(-45deg);
+      height: 60rem;
+      transition: .7s all;
+    }
+
+    &:hover {
+      border: 1px solid #ffffff44;
+      box-shadow: 0 7px 50px 10px #000000aa;
+      transform: scale(1.015);
+      filter: brightness(1.3);
+
+      ::before {
+        filter: brightness(.5);
+        top: -100%;
+        left: 200%;
+      }
+    }
+  }
+
+  .bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h1 {
+      font-size: 20rem;
+      filter: opacity(0.5);
+    }
+  }
+
+  .carousel {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  ul.slides {
+    display: block;
+    position: relative;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+  }
+
+  .slides * {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  ul.slides input {
+    display: none;
+  }
+
+
+  .slide-container {
+    display: block;
+  }
+
+  .slide-image {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0;
+    transition: all .7s ease-in-out;
+  }
+
+  .slide-image img {
+    width: auto;
+    min-width: 100%;
+    height: 100%;
+  }
+
+  .carousel-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    font-size: 100px;
+    line-height: 600px;
+    color: #fff;
+  }
+
+  .carousel-controls label {
+    display: none;
+    position: absolute;
+    padding: 0 20px;
+    opacity: 0;
+    transition: opacity .2s;
+    cursor: pointer;
+  }
+
+  .slide-image:hover+.carousel-controls label {
+    opacity: 0.5;
+  }
+
+  .carousel-controls label:hover {
+    opacity: 1;
+  }
+
+  .carousel-controls .prev-slide {
+    width: 49%;
+    text-align: left;
+    left: 0;
+  }
+
+  .carousel-controls .next-slide {
+    width: 49%;
+    text-align: right;
+    right: 0;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    z-index: 999;
+    text-align: center;
+  }
+
+  .carousel-dots .carousel-dot {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    margin: 10px;
+  }
+
+  input:checked+.slide-container .slide-image {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1s ease-in-out;
+  }
+
+  input:checked+.slide-container .carousel-controls label {
+    display: block;
+  }
+
+  input#img-1:checked~.carousel-dots label#img-dot-1,
+  input#img-2:checked~.carousel-dots label#img-dot-2,
+  input#img-3:checked~.carousel-dots label#img-dot-3,
+  input#img-4:checked~.carousel-dots label#img-dot-4,
+  input#img-5:checked~.carousel-dots label#img-dot-5,
+  input#img-6:checked~.carousel-dots label#img-dot-6 {
+    opacity: 1;
+  }
+
+
+  input:checked+.slide-container .nav label {
+    display: block;
+  }
+
+
+  .cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    margin: 2px 200px;
+  }
+  .main form{
+    margin: 11px;
+  }
+  .main form button{
+    padding: 13px;
+    font-size: 16px;
+    font-family: math;
+    background-color: #23252e;
+    color: aliceblue;
+    border-radius: 15px;
+    transition: 0.4s all ease-in-out;
+    cursor: pointer;
+  }
+  .main form button:hover{
+      background-color: gray;
+      color: #eee;
+  }
+  @media (max-width: 700px) {
+    .cont{
+      margin: 2px 0px;
+    }
+  }
+  .heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    padding: 45px 0px;
+  }
+  .slides{
+    border-radius: 23px;
+  }
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div>
+  <div class="carousel">
+    <ul class="slides">
+      <input type="radio" name="radio-buttons" id="img-1" checked />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Timisoara_-_Regional_Business_Centre.jpg">
+          <h1 style="z-index: 3; position: absolute;">This is the best shop</h1>
+        </div>
+        <div class="carousel-controls">
+          <label for="img-3" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-2" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-2" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="https://content.r9cdn.net/rimg/dimg/db/02/06b291e8-city-14912-171317ad83a.jpg?width=1750&height=1000&xhint=3040&yhint=2553&crop=true">
+        </div>
+        <div class="carousel-controls">
+          <label for="img-1" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-3" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-3" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="https://speakzeasy.files.wordpress.com/2015/05/twa_blogpic_timisoara-4415.jpg">
+        </div>
+        <div class="carousel-controls">
+          <label for="img-2" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-1" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <div class="carousel-dots">
+        <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+        <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+        <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<div class="heading">
+    <h1 style="color: red;">Products</h1>
+</div>
+
+<div class="cont">
+  {% for product in products %}
+  <div class="nft">
+    <div class='main'>
+      <img class="tokenImage" src="{{ product.product_img.url }}" alt="{{ product.name }}" />
+      <h2>{{product.product_name}}</h2>
+      <p class='description'>{{product.product_desc}}</p>
+      <div class='tokenInfo'>
+        <div class="price">
+          <ins>Pkr:</ins>
+          <p>{{product.product_price}}</p>
+        </div>
+        <div class="duration">
+          <ins>Date:</ins>
+          <p>{{product.pub_date}}</p>
+        </div>
+      </div>
+      <hr/>
+      <form action="{% url 'add_to_cart' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <button type="submit">Add to Cart</button>
+    </form>
+      <form action="{% url 'remove_from_cart' product.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <button type="submit">Remove from Cart</button>
+    </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

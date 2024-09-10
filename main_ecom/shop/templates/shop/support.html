@@ -1,0 +1,256 @@
+{% extends 'shop/basic.html' %}
+{%block title %} Support {% endblock %}
+
+{%block style%}
+
+<style>
+  .header {
+    display: flex;
+    color: beige;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 9%;
+    font-size: 30px;
+    background: linear-gradient(90deg, rgb(1, 1, 2) 0%, rgb(83, 83, 87) 35%, rgb(8, 8, 8) 100%);
+  }
+
+  .search_in {
+    display: flex;
+    margin-top: 39px;
+  }
+
+  .search_in input {
+    padding: 19px;
+    border-radius: 19px;
+    font-size: 21px;
+  }
+
+  .search_in button {
+    border-radius: 19px;
+    font-size: 30px;
+    padding: 12px;
+    margin-left: 10px;
+    font-family: fangsong;
+    background-color: #1e1e20;
+    color: aliceblue;
+    transition: 0.5s all ease-in-out;
+  }
+
+  .search_in button:hover {
+    background-color: aliceblue;
+    color: black;
+  }
+
+  .parent_cont {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 28px 200px;
+    display: grid;
+    font-size: 20px;
+  }
+
+  .child {
+    border: 1px solid black;
+    padding: 20% 4%;
+    padding-bottom: 14px;
+    margin: 10px;
+    border-radius: 8px;
+    font-family: math;
+    transition: 0.3s all ease-in-out;
+  }
+
+  .child:hover {
+    box-shadow: 7px 8px 0px 1px gray;
+
+  }
+
+  .ch_text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ch_text h1 {
+    margin-top: 4px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  .ch_text ul li{
+    color: rgb(78, 73, 73);
+    font-weight: lighter;
+  }
+  .see_more_btn{
+    display: flex;
+    padding-top: 86px;
+    padding-bottom: 0;
+    margin-top: 98px;
+    padding: 21px;
+    font-size: 27px;
+    text-decoration: none;
+    color: orange;
+
+  }
+  .see_more_btn a{
+    text-decoration: none;
+    color: #d56207;
+  }
+  .see_more_btn a:hover{
+    text-decoration: wavy;
+    color:  rgb(78, 73, 73);
+  }
+  .ch_text ul li{
+    padding: 4px 0px;
+  }
+  .icon img{
+    width: 62px;
+  }
+  @media (max-width:1450px) {
+    .parent_cont{
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0% 5%;
+    }
+  }
+  @media (max-width:1000px) {
+    .parent_cont{
+      grid-template-columns: repeat(1, 1fr);
+      padding: 0% 5%;
+    }
+  }
+  @media (max-width:490px) {
+    .header{
+      font-size: 22px;
+    }
+    .search_in input{
+      padding: 0px;
+    border-radius: 9px;
+    font-size: 14px;
+    padding-left: 10px;
+    }
+    .search_in button{
+      font-size: 14px;
+    }
+    .parent_cont{
+      font-size: 15px;
+    }
+    
+  }
+  @media (max-width:320px) {
+
+    .search_in input{
+      padding: 0px;
+    border-radius: 9px;
+    font-size: 10px;
+    padding-left: 10px;
+    }
+    .search_in button{
+      font-size: 10px;
+    }
+    .parent_cont{
+      font-size: 10px;
+    }
+  }  
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<header class="header">
+  <h3>Welcome to the Help Center</h3>
+  <h1>How can we help?</h1>
+  <form action="" class="search_in">
+    <input type="text" placeholder="Search...">
+    <button>Search</button>
+  </form>
+
+</header>
+
+<div class="parent_cont">
+  <div class="chid_cont1 child">
+    <div class="icon"><img src="https://static.thenounproject.com/png/1635595-200.png" alt=""></div>
+    <div class="ch_text">
+      <h1>Account Management</h1>
+      <ul>
+        <li>Creating an Account.</li>
+        <li>Updating Account Information.</li>
+        <li>Deactivating or Deleting Your Account.</li>
+        <li>Resetting Your Password.</li>
+        <li>Deactivating or Deleting Your Account.</li>
+      </ul>
+    </div>
+
+    <div class="see_more_btn">
+      <a href="{% url 'skiping' %}">Expore Activity -></a>
+    </div>
+  </div>
+  <div class="chid_cont1 child">
+    <div class="icon"><img src="https://w7.pngwing.com/pngs/1017/516/png-transparent-advance-payment-computer-icons-money-cash-payment-icon-dollar-bill-illustration-miscellaneous-angle-text.png" alt=""></div>
+    <div class="ch_text">
+      <h1>Ordering and Payments</h1>
+      <ul>
+        <li>Placing an Order.</li>
+        <li>Payment Methods Accepted.</li>
+        <li>Applying Discount Codes.</li>
+        <li>Order Tracking.</li>
+        <li>Modifying or Canceling an Order.</li>
+        <li>Refunds and Returns.</li>
+      </ul>
+    </div>
+    <div class="see_more_btn">
+        <a href="{% url 'skiping' %}">Expore Activity -></a>
+    </div>
+  </div>
+  <div class="chid_cont1 child">
+    
+    <div class="icon"><img src="https://png.pngtree.com/png-vector/20191105/ourmid/pngtree-delivery-truck-icon-png-image_1959172.jpg" alt=""></div>
+    <div class="ch_text">
+      <h1>Shipping and Delivery</h1>
+      <ul>
+        <li>Shipping Options and Rates.</li>
+        <li>Estimated Delivery Times.</li>
+        <li>Tracking Your Shipment.</li>
+        <li>Address Changes.</li>
+      </ul>
+    </div>
+    <div class="see_more_btn">
+        <a href="{% url 'skiping' %}">Expore Activity -></a>
+    </div>
+  </div>
+  <div class="chid_cont1 child">
+    <div class="icon"><img src="https://static.thenounproject.com/png/3546700-200.png" alt=""></div>
+    <div class="ch_text">
+      <h1>Product Information</h1>
+      <ul>
+        <li>Product Availability.</li>
+        <li>Sizing and Specifications.</li>
+        <li>Product Care Instructions.</li>
+        <li>Warranties and Guarantees.</li>
+      </ul>
+    </div>
+    <div class="see_more_btn">
+        <a href="{% url 'skiping' %}">Expore Activity -></a>
+    </div>
+  </div>
+  <div class="chid_cont1 child">
+    <div class="icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo2XFrJgH3fg0UoW2_GEgMjMzcRqOYq1JHvg&s" alt=""></div>
+    <div class="ch_text">
+      <h1>Technical Support</h1>
+      <ul>
+        <li>Troubleshooting Common Issues.</li>
+        <li>Browser and Device Compatibility.</li>
+        <li>Website Navigation Help.</li>
+      </ul>
+    </div>
+    <div class="see_more_btn">
+        <a href="{% url 'skiping' %}">Expore Activity -></a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+{%block js%}
+
+
+{%endblock%}

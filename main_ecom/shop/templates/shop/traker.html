@@ -1,0 +1,162 @@
+
+{% extends 'shop/basic.html' %}
+
+{% block title %} Order Tracking {% endblock %}
+
+{% block style %}
+<style>
+
+    /* Container Styling */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+h2 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Strong Element Styling */
+strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* List Styling */
+.items-lists1 {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.items-lists1 li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Error Message Styling */
+p.error {
+    color: #ff4d4d;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    p, .items-lists1 li, label, input[type="text"], button {
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Order Tracking</h2>
+    {% if order %}
+        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+        <p><strong>Items:</strong></p>
+        <ul class="items-list1">
+            {% for item in order.items.all %}
+                <li>{{ item.name }} - ${{ item.price }}</li>
+            {% endfor %}
+        </ul>
+    {% elif error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <form action="" method="get">
+            <label for="order_id" name="order_id">Enter Order ID:</label>
+            <input type="text" id="order_id" name="order_id" required>
+            <button type="submit">Track Order</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+{% block js %}
+
+
+
+{% endblock %}

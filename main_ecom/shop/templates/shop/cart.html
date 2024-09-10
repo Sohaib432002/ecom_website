@@ -1,0 +1,255 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}Cart-items{% endblock %}
+
+{% block style %}
+<style>
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5% 0%;
+  flex-wrap: wrap;
+}
+.title{
+    margin-bottom: 5vh;
+}
+.card{
+    margin: auto;
+    max-width: 1182px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+    
+}
+@media(max-width:767px){
+    .card{
+        margin: 3vh auto;
+        padding: 26px;
+    
+    }
+}
+.cart{
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+.col a{
+  text-decoration: none;
+  font-size: 23px;
+  color: #ddd;
+}
+@media(max-width:767px){
+    .cart{
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem;
+    }
+}
+.main:hover{
+  background-color: #000;
+  color: #ddd;
+}
+.summary{
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65);
+    font-size: 29px;
+}
+@media(max-width:767px){
+    .summary{
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1rem;
+    }
+}
+.summary .col-2{
+    padding: 0;
+}
+.summary .col-10
+{
+    padding: 0;
+}
+
+.title b{
+    font-size: 1.5rem;
+}
+.main{
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%;
+    display: flex;
+    background: gray;
+    border-radius: 7px;
+    font-size: 21px;
+    color: antiquewhite;
+    padding: 12px 38px;
+    box-shadow: 2px 2px 2px 2px dimgray;
+}
+.col-md-4 button:hover{
+  background-color: #a99c9c;
+  color: #000;
+}
+a{
+    padding: 0 1vh;
+}
+.close{
+    margin-left: auto;
+    font-size: 0.7rem;
+}
+img{
+    width: 6.5rem;
+    border-radius: 7px;
+}
+.back-to-shop{
+    margin-top: 4.5rem;
+}
+h5{
+    margin-top: 4vh;
+}
+hr{
+    margin-top: 1.25rem;
+}
+form{
+    padding: 2vh 0;
+}
+select{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+input{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+input:focus::-webkit-input-placeholder
+{
+      color:transparent;
+}
+.btn{
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0;
+}
+.btn:focus{
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none; 
+}
+.btn:hover{
+    color: white;
+}
+a{
+    color: black; 
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+ #code{
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+}
+.text-muted{
+  cursor: pointer;
+}
+.text-muted:hover{
+  color: gray;
+}
+.btn_ button{
+  padding: 11px;
+    border-radius: 12px;
+}
+.btn_ button:hover{
+  background-color: #a99c9c;
+  color: #000;
+  cursor: pointer;
+}
+.btn_ a{
+  text-decoration: none;
+}
+
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="card">
+  <div class="row">
+      <div class="col-md-8 cart">
+          <div class="title">
+              <div class="row">
+                  <div class="col"><h4><b style="margin-right: 23px;">Shopping Cart</b></h4></div>
+                  <div class="col align-self-center text-right text-muted">{{quantity_item}}  items</div>
+              </div>
+          </div>    
+          {% for item in cart_items %}
+          
+          <div class="row border-top border-bottom">
+              <div class="row main align-items-center">
+                  <div class="col-2"><img class="img-fluid" src="{{ item.Product.product_img.url }}" alt="{{ item.product.name }}"></div>
+                  <div class="col">
+                      <div class="row text-muted">{{item.product}}</div>
+                  </div>
+                  <div class="col">
+                      <button style="    background-color: #a99c9c;
+                      border-radius: 9px;
+                      margin: 5px 12px;"><a href="{% url 'update_cart_quantity' item.product.id 'decrease'  %}">-</a></button>{{item.quantity}} <button style="    background-color: #a99c9c;
+    border-radius: 9px;
+    margin: 5px 12px;" ><a href="{% url 'update_cart_quantity' item.product.id 'increase' %}">+</a> </button> 
+                  </div>
+                  <div class="col">{{item.product.product_price}}<span class="close"> Pkr</span></div>
+                  <div class="btn_"><button style="margin-left: 23px;"><a href="{% url 'remove_from_cart_view' item.product.id %}">Remove from cart</a></button></div>
+                  
+              </div>
+          </div>
+
+       
+          {% endfor %}
+          <div class="back-to-shop"><a href="{% url 'product' %}">&leftarrow;</a><a href="{% url 'product' %}"><span class="text-muted">Back to shop</span></a></div>
+      </div>
+      <div class="col-md-4 summary">
+          <div><h5><b>Summary</b></h5></div>
+          <hr>
+          <div class="row">
+          </div>
+          <form>
+              <p>SHIPPING</p>
+              <select><option class="text-muted">Standard-Delivery- 150 Pkr</option></select>
+              <p>GIVE CODE</p>
+              <input id="code" placeholder="Enter your code">
+          </form>
+          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE :<br></div> <br>
+              <div class="col text-right">{{total_price}} Pkr</div>
+          </div>
+          <button class="btn" style="cursor: pointer;"><a style="text-decoration: none; color: white;" href="{% url 'checkout' %}">CHECKOUT</a></button>
+      </div>
+  </div>
+  
+</div>
+
+{% endblock %}

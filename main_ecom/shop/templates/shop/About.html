@@ -1,0 +1,348 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} About {% endblock %}
+
+{% block style %}
+<style>
+  .cotainer {
+    padding: 8%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    background-image: url('https://cdn.prod.website-files.com/605826c62e8de87de744596e/6298b33e6aafa619b517757c_Blog-Coverasdfghjs.jpg');
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Add a semi-transparent color */
+    background-blend-mode: multiply;
+    /* Apply blend mode */
+
+  }
+
+  .text0 h1 {
+    display: flex;
+    justify-content: start;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    color: antiquewhite;
+    font-size: 124px;
+    font-family: fantasy;
+  }
+
+  .text0 p {
+    font-size: 59px;
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+  }
+
+  .section1 {
+    display: flex;
+    padding: 3%;
+    background-color: black;
+
+
+
+  }
+
+  .text_sect {
+    color: aliceblue;
+    display: flex;
+    font-size: 23px;
+    font-family: system-ui;
+  }
+
+  .heading_text_sec {
+    padding: 52px;
+  }
+
+  .heading_text_sec h1 {
+    padding-bottom: 37px;
+  }
+
+  .sect2 {
+    padding: 8%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    background-image: url('https://cdn.prod.website-files.com/605826c62e8de87de744596e/6298b33e6aafa619b517757c_Blog-Coverasdfghjs.jpg');
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Add a semi-transparent color */
+    background-blend-mode: multiply;
+  }
+
+  .sect4 {
+    padding: 8%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: bottom;
+    background-image: url('https://cdn.prod.website-files.com/605826c62e8de87de744596e/6298b33e6aafa619b517757c_Blog-Coverasdfghjs.jpg');
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Add a semi-transparent color */
+    background-blend-mode: multiply;
+  }
+
+  .text1 {
+    font-size: 36px;
+    color: aliceblue;
+    font-family: fantasy;
+  }
+
+  .sect3 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: black;
+    padding: 3%;
+  }
+
+  .img1 img {
+    width: 400px;
+  }
+
+  .img1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    color: aliceblue;
+  }
+
+  .sect5 {
+    display: flex;
+    justify-content: center;
+    padding: 86px 35px;
+    font-size: 20px;
+    padding-top: 81px;
+    background: black;
+    color: aliceblue;
+  }
+
+  .child1,
+  .child2,
+  .child3,
+  .child4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 55px;
+  }
+
+  .child1 p,
+  .child2 p,
+  .child3 p,
+  .child4 p {
+    display: flex;
+    text-align: center;
+  }
+
+  .child1 h1,
+  .child2 h1,
+  .child3 h1,
+  .child4 h1 {
+    padding: 39px 0px;
+    justify-content: center;
+  }
+  .sect6 p{
+    background: black;
+    font-size: 17px;
+    padding: 98px;
+    font-family: sans-serif;
+  }
+  @media (max-width: 1400px) {
+      .sect5 {
+          flex-wrap: wrap;
+        }
+        
+    .section1 {
+      flex-wrap: wrap;
+    }
+    .sect6 p{
+      padding: 50px;
+    }
+  }
+
+  @media (max-width: 890px) {
+    .img img {
+      width: 323px;
+    }
+
+    .section1 {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .text0 h1 {
+      font-size: 74px;
+    }
+
+    .text0 p {
+      font-size: 36px;
+    }
+
+    .sect5 {
+      padding: 0%;
+      flex-wrap: wrap;
+    }
+    .sect6 p{
+      padding: 30px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .img img {
+      width: 200px;
+    }
+
+    .section1 {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .text0 h1 {
+      font-size: 55px;
+    }
+
+    .text0 p {
+      font-size: 23px;
+    }
+
+    .heading_text_sec {
+      padding: 12px;
+    }
+
+    .img1 img {
+      width: 281px;
+    }
+
+    .sect5 {
+      font-size: 15px;
+    }
+
+    .child1,
+    .child2,
+    .child3,
+    .child4 {
+      padding: 39px 12px;
+    }
+
+    .text1 {
+      font-size: 25px;
+    }
+  }
+
+  @media (max-width: 300px) {
+    .img1 img {
+      width: 130px;
+    }
+
+    .text1 {
+      font-size: 15px;
+    }
+    .sect6 p{
+        padding: 13px;
+    }
+  }
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="cotainer">
+  <div class="text0">
+    <h1>About us</h1>
+    <p>Welcome to our website</p>
+  </div>
+</div>
+<div class="section1">
+  <div class="img">
+    <img src="https://cdn-icons-png.flaticon.com/512/4047/4047296.png" alt="">
+  </div>
+  <div class="text_sect">
+    <div class="heading_text_sec">
+      <h1>About us</h1>
+      <p>
+        At [Your Store Name], we believe in making online shopping a seamless and enjoyable experience for everyone. Our mission is to bring you a wide selection of
+        high-quality products at the best prices, all from the comfort of your home.
+      </p>
+      <h1>Who We Are</h1>
+      <p>Founded with a passion for innovation and customer satisfaction, [Your Store Name] has grown from a small startup into a trusted online retailer. We are a team of dedicated professionals who strive to offer a diverse range of products, from the latest electronics to trendy fashion, and everything in between.</p>
+    </div>
+  </div>
+</div>
+<div class="sect2">
+  <div class="text1">
+    <h1>Our Values</h1>
+  </div>
+</div>
+<div class="sect3">
+  <div class="img1">
+    <img src="https://cdn-icons-png.flaticon.com/512/5988/5988354.png" alt="">
+    <caption>Quality Assurance</caption>
+  </div>
+  <div class="img1">
+    <img src="https://cdn-icons-png.flaticon.com/512/3343/3343387.png" alt="">
+    <caption>Affordability</caption>
+  </div>
+  <div class="img1">
+    <img src="https://cdn-icons-png.flaticon.com/512/5063/5063056.png" alt="">
+    <caption>Innovation</caption>
+  </div>
+</div>
+<div class="sect4">
+  <div class="text1">
+    <h1>Why Shop With Us?</h1>
+  </div>
+</div>
+<div class="sect5">
+  <div class="child1">
+    <h1>Wide Selection</h1>
+    <p>Whether you're looking for cutting-edge electronics, stylish apparel, or essential household items, we've got it all.</p>
+  </div>
+  <div class="child2">
+    <h1>Secure Shopping</h1>
+    <p>Your privacy and security are important to us. Our site uses the latest encryption technology to protect your personal information.</p>
+  </div>
+  <div class="child3">
+    <h1>Fast and Reliable Shipping</h1>
+    <p>We work with trusted shipping partners to ensure your orders arrive on time and in perfect condition.</p>
+  </div>
+  <div class="child4">
+    <h1>Customer Support</h1>
+    <p>Our friendly and knowledgeable support team is always here to assist you with any questions or concerns.</p>
+  </div>
+</div>
+
+<div class="sect4">
+  <div class="text1">
+    <h1>Join Our Community</h1>
+  </div>
+</div>
+<div class="sect6">
+  <div class="text1">
+    <p>
+      We invite you to join the [Your Store Name] community. Follow us on social media, sign up for our newsletter, and stay connected with the latest news, offers, and promotions.
+    We’re more than just a store – we’re a community of like-minded individuals who value quality, convenience, and great deals. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt magnam itaque nobis laboriosam porro numquam! Laboriosam architecto, at in incidunt iste, quisquam magnam corrupti explicabo quo officiis deserunt, illum error!
+    Facere fuga numquam quasi aperiam earum quis ipsum consequatur officiis repellendus nobis consequuntur sunt, tenetur perspiciatis nemo qui. Iure magnam blanditiis quae placeat repudiandae, eos voluptate animi quis eaque id.
+    Pariatur fugit at reprehenderit ipsum assumenda dicta magnam soluta adipisci labore? Veniam error ab ducimus expedita totam, similique, assumenda incidunt sit nihil maxime vitae molestiae ipsum rerum alias dolorum placeat.
+    Odit similique placeat recusandae, veritatis repellendus sequi inventore eligendi magnam cum corrupti ea eum doloremque autem tempora saepe ratione repudiandae deserunt natus quam minus! Ipsa officiis reprehenderit repellat tenetur unde.
+    Inventore repellendus ex quis fuga harum. Id ipsam, iure illo quisquam dolorum repellendus, nisi eum repudiandae perspiciatis quae ratione deleniti delectus quos, accusamus ea labore consequuntur veniam pariatur. Labore, repellat?
+    </p>
+  </div>
+</div>
+
+<div class="sect4">
+    <div class="text1">
+      <marquee behavior="scroll" direction="overflow-x" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Thank You for Choosing [Your Store Name]
+
+        We appreciate your trust in us and look forward to serving you. Whether you’re a new customer or a returning one, we’re here to make your shopping experience as enjoyable as possible.
+        
+        </marquee>
+    </div>
+  </div>
+
+{% endblock %}
